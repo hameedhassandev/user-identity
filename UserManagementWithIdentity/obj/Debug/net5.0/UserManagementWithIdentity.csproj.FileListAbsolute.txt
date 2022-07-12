@@ -169,3 +169,6 @@ C:\Users\Hameed\source\repos\UserManagementWithIdentity\UserManagementWithIdenti
 C:\Users\Hameed\source\repos\UserManagementWithIdentity\UserManagementWithIdentity\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
 C:\Users\Hameed\source\repos\UserManagementWithIdentity\UserManagementWithIdentity\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\Hameed\source\repos\UserManagementWithIdentity\UserManagementWithIdentity\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
+C:\Users\Hameed\source\repos\UserManagementWithIdentity\UserManagementWithIdentity\obj\Debug\net5.0\Razor\Views\Roles\Index.cshtml.g.cs
+C:\Users\Hameed\source\repos\UserManagementWithIdentity\UserManagementWithIdentity\obj\Debug\net5.0\Razor\Views\Labtop\Index.cshtml.g.cs
+C:\Users\Hameed\source\repos\UserManagementWithIdentity\UserManagementWithIdentity\obj\Debug\net5.0\Razor\Views\Roles\_RoleForm.cshtml.g.cs

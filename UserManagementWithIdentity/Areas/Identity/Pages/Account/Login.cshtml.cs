@@ -13,15 +13,19 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using UserManagementWithIdentity.Models;
 using System.Net.Mail;
+using Microsoft.EntityFrameworkCore;
 
 namespace UserManagementWithIdentity.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class LoginModel : PageModel
     {
+       
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly RoleManager<IdentityRole> _roleManager;
+
 
         public LoginModel(SignInManager<ApplicationUser> signInManager, 
             ILogger<LoginModel> logger,
@@ -93,6 +97,8 @@ namespace UserManagementWithIdentity.Areas.Identity.Pages.Account
                
                 if (result.Succeeded)
                 {
+                   //var isAdmin =  await _userManager.GetUsersInRoleAsync("Admin");
+                   
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }
