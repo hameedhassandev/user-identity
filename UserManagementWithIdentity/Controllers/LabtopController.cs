@@ -5,16 +5,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UserManagementWithIdentity.Data;
 
 namespace UserManagementWithIdentity.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class LabtopController : Controller
     {
+        ApplicationDbContext db;
+        public LabtopController(ApplicationDbContext _db)
+        {
+            db = _db;
+        }
         // GET: LabtopController
         public ActionResult Index()
         {
-            return View();
+            return View(db.Laptops.ToList());
         }
 
         // GET: LabtopController/Details/5

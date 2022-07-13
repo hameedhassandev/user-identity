@@ -14,6 +14,7 @@ namespace UserManagementWithIdentity.Controllers
     public class RolesController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
+       
         public RolesController(RoleManager<IdentityRole> roleManager)
         {
             _roleManager = roleManager;
@@ -21,9 +22,10 @@ namespace UserManagementWithIdentity.Controllers
         public async Task<IActionResult> Index()
         {
             var roles = await _roleManager.Roles.ToListAsync();
+            
             return View(roles);
         }
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(RoleViewModel model)

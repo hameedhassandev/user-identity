@@ -14,6 +14,7 @@ using Microsoft.Extensions.Logging;
 using UserManagementWithIdentity.Models;
 using System.Net.Mail;
 using Microsoft.EntityFrameworkCore;
+using UserManagementWithIdentity.Data;
 
 namespace UserManagementWithIdentity.Areas.Identity.Pages.Account
 {
@@ -26,10 +27,12 @@ namespace UserManagementWithIdentity.Areas.Identity.Pages.Account
         private readonly ILogger<LoginModel> _logger;
         private readonly RoleManager<IdentityRole> _roleManager;
 
+    
 
         public LoginModel(SignInManager<ApplicationUser> signInManager, 
             ILogger<LoginModel> logger,
             UserManager<ApplicationUser> userManager)
+            
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -97,8 +100,11 @@ namespace UserManagementWithIdentity.Areas.Identity.Pages.Account
                
                 if (result.Succeeded)
                 {
-                   //var isAdmin =  await _userManager.GetUsersInRoleAsync("Admin");
-                   
+
+                    //var isAdmin =  await _userManager.GetUsersInRoleAsync("Admin");
+                   // var user = await _userManager.GetUserAsync(User);
+                    //_userManager.GetUserId(User);
+
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }
