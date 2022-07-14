@@ -15,6 +15,7 @@ using UserManagementWithIdentity.Models;
 using System.Net.Mail;
 using Microsoft.EntityFrameworkCore;
 using UserManagementWithIdentity.Data;
+using UserManagementWithIdentity.ViewModels;
 
 namespace UserManagementWithIdentity.Areas.Identity.Pages.Account
 {
@@ -89,9 +90,12 @@ namespace UserManagementWithIdentity.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
+               
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+               
                 var result = await _signInManager.PasswordSignInAsync(
+                   
                     username,
                     Input.Password,
                     Input.RememberMe,
@@ -100,11 +104,13 @@ namespace UserManagementWithIdentity.Areas.Identity.Pages.Account
                
                 if (result.Succeeded)
                 {
-
-                    //var isAdmin =  await _userManager.GetUsersInRoleAsync("Admin");
-                   // var user = await _userManager.GetUserAsync(User);
-                    //_userManager.GetUserId(User);
-
+                    //"68b5c620-134e-4ccd-b98b-988710f0518e";
+                   // var user = await _userManager.FindByIdAsync("68b5c620-134e-4ccd-b98b-988710f0518e");
+                   // var isAdmin = await _userManager.IsInRoleAsync(user, "Admin");
+                   // if (isAdmin)
+                   // {
+                   //     return LocalRedirect("~/Roles");
+                   // }
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }
