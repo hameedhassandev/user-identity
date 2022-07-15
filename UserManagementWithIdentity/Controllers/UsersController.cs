@@ -58,5 +58,39 @@ namespace UserManagementWithIdentity.Controllers
 
             return View(viewModel);
         }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ManageRole(UserRoleViewModel model)
+        {
+            //check if user id exist
+            var user = await _userManager.FindByIdAsync(model.UserId);
+            if (user == null)
+                return NotFound();
+
+            //role is assigned and role is selected so not needed action 
+            //role is not assigned and role is selected so needed action (add role) 
+            //role is not assigned and role is  not selected so not needed action  
+            //role is assigned and role is  not selected so  needed action (remove role) 
+            var userRoles = await _userManager.GetRolesAsync(user);
+            foreach(var role in model.Roles)
+            {
+                //role is assigned and role is  not selected so  needed action (remove role)
+                if (userRoles.Any(r => r == role.RoleName) && !role.IsSelected)
+                {
+                    await _userManager.RemoveFromRoleAsync(user, role.RoleName);
+                }
+                //role is not assigned and role is selected so needed action (add role) 
+                if (!userRoles.Any(r => r == role.RoleName) && role.IsSelected)
+                {
+                    await _userManager.AddToRoleAsync(user, role.RoleName);
+                }
+
+            }
+
+            return RedirectToAction(nameof(Index));
+
+        }
     }
 }
